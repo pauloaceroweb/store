@@ -64,7 +64,7 @@ public class ProductService implements IProductService {
             this.productRepository.deleteById(id);
             return new ResponseEntity<Boolean>(true, HttpStatus.OK);
         }catch (Exception e) {
-            return new ResponseEntity<Boolean>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

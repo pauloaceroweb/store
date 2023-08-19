@@ -26,12 +26,17 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public ResponseEntity<List<Category>> create(Category category) {
-        return null;
+    public ResponseEntity<Category> create(Category category) {
+        try {
+            Category categorySaved = this.categoryRepository.save(category);
+            return new ResponseEntity<Category>(categorySaved, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<Category>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
-    public ResponseEntity<List<Category>> update(Category category) {
+    public ResponseEntity<Category> update(Category category) {
         return null;
     }
 
