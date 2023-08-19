@@ -47,4 +47,24 @@ public class ProductService implements IProductService {
             return  new ResponseEntity<Product>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @Override
+    public ResponseEntity<Product> update(Product product) {
+        try {
+            Product productUpdated = this.productRepository.save(product);
+            return new ResponseEntity<Product>(productUpdated, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<Product>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public ResponseEntity<Boolean> delete(Long id) {
+        try {
+            this.productRepository.deleteById(id);
+            return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<Boolean>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

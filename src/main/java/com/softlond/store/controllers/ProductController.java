@@ -24,4 +24,14 @@ public class ProductController {
     private  ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return this.iProductService.created(product);
     }
+
+    @PutMapping("/update")
+    private ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        return this.iProductService.update(product);
+    }
+
+    @DeleteMapping("/delete")
+    private ResponseEntity<Boolean> deleteProduct(@RequestParam Long id) {
+        return this.iProductService.delete(id);
+    }
 }

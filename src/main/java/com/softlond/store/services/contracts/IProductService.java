@@ -9,4 +9,8 @@ public interface IProductService {
     public ResponseEntity<List<Product>> findAll();
 
     public ResponseEntity<Product> created(Product product);
+
+    public ResponseEntity<Product> update(Product product);
+
+    public ResponseEntity<Boolean> delete(Long id);
 }
