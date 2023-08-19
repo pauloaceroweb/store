@@ -31,17 +31,27 @@ public class CategoryService implements ICategoryService {
             Category categorySaved = this.categoryRepository.save(category);
             return new ResponseEntity<Category>(categorySaved, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Category>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Category>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
     public ResponseEntity<Category> update(Category category) {
-        return null;
+        try {
+            Category categoryUpdated = this.categoryRepository.save(category);
+            return new ResponseEntity<Category>(categoryUpdated, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<Category>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Override
     public ResponseEntity<Boolean> delete(Long id) {
-        return null;
+        try {
+            this.categoryRepository.deleteById(id);
+            return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
